@@ -1,2 +1,10 @@
-<h1>Admin::Products#new</h1>
-<p>Find me in app/views/admin/products/new.html.erb</p>
+<% provide(:title, "新規商品登録") %>
+<% provide(:url, admin_products_path) %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 mx-auto">
+      <h2 class="mt-2">新規商品登録</h2>
+        <%= render 'form', product: @product %>
+    </div>
+  </div>
+</div>
