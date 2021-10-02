@@ -1,0 +1,27 @@
+ <%= form_with model: product, url: yield(:url), local:true do |f| %>
+   <%= render 'layouts/errors', object: product %>
+   <%= f.attachment_field :image %>
+   <div class="form-group mt-2">
+     <%= f.label :"商品名" %>
+     <%= f.text_field :name, class: "form-control name", autofocus: true %>
+   </div>
+   <div class="form-group">
+     <%= f.label :"商品説明" %>
+     <%= f.text_area :detail, class: "form-control introduction", :size => "5x10"  %>
+   </div>
+   <div class="form-group">
+     <%= f.label :"ジャンル" %>
+     <%= f.collection_select :genre_id, Genre.all, :id, :name, class: "dropdown-menu"  %>
+   </div>
+   <div class="form-group">
+     <%= f.label :"税抜価格" %>
+     <%= f.text_field :price, class: "form-control price" %>円
+   </div>
+   <div class="form-group">
+     <%= f.label :"販売ステータス" %>
+     <%= f.select :sales_status, [['販売中', false], ['販売停止', true]], class: "dropdown-menu" %>
+   </div>
+   <div class="actions col-xs-7">
+       <%= f.submit "新規登録", class: "btn btn-primary btn-lg pull-right" %>
+   </div>
+ <% end %>
