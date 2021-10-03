@@ -27,7 +27,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    if @product.update!(product_params)
+    if @product.update(product_params)
       flash[:info] = "商品情報を編集しました"
       redirect_to admin_product_path(@product)
     else
@@ -38,7 +38,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.permit(:name, :detail, :price, :image, :sales_status, :genre_id)
+    params.require(:product).permit(:name, :detail, :price, :image, :sales_status, :genre_id)
   end
 
 end

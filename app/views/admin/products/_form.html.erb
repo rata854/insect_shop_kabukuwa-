@@ -19,9 +19,12 @@
    </div>
    <div class="form-group">
      <%= f.label :"販売ステータス" %>
-     <%= f.select :sales_status, [['販売中', false], ['販売停止', true]], class: "dropdown-menu" %>
+	    <%= f.radio_button :sales_status, '販売中' %>
+     <%= f.label :sales_status, '販売中', value: '販売中' %>
+     <%= f.radio_button :sales_status, '販売停止' %>
+     <%= f.label :sales_status, '販売停止', value: '販売停止' %>
    </div>
    <div class="actions col-xs-7">
-       <%= f.submit "新規登録", class: "btn btn-primary btn-lg pull-right" %>
+       <%= f.submit %>
    </div>
  <% end %>
