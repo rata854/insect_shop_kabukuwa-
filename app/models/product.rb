@@ -7,8 +7,13 @@ class Product < ApplicationRecord
   validates  :name, :price, presence: true
   validates :price, numericality: { only_integer: true }
 
-  enum sales_status: { "販売中": true, "販売停止": false }
+  enum sales_status: { "販売中": false, "販売停止": true }
 
   attachment :image
+
+  # 消費税計算
+  def self.tax_included_price(product)
+      (product.price * 1.1).floor(0)
+  end
 
 end
