@@ -22,7 +22,7 @@
           <tr>
           <th>税込価格<br>(税抜価格)</th>
           <th>
-          <%= (@product.price.to_i * 1.1).round %>(<%= @product.price %>)円
+          <%= @tax_included_price %>(<%= @product.price %>)円
           </th>
         </tr>
         <tr>
