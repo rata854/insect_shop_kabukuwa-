@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :new, :create, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
     resources :genres, only: [:index, :create, :edit, :update, :show]
-    resources :costomers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :order_products, only: [:update]
   end
 
-  devise_for :costomers
+  devise_for :customers
 get 'about' => 'public/products#about'
   namespace :public do
 
