@@ -1,4 +1,5 @@
 class Public::ProductsController < ApplicationController
+  
   def top
     @products = Product.all
   end
@@ -10,8 +11,9 @@ class Public::ProductsController < ApplicationController
     @products = Product.all
   end
 
-
-
   def show
+    @product = Product.find(params[:id])
+    @cart_product = CartProduct
   end
+  
 end

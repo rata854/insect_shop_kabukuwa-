@@ -1,2 +1,35 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
+<div class='col-md-9 offset-md-2'>
+  <h2>商品詳細</h2>
+   <div class='row'>
+    <div class='col-md-1'>
+     <%= attachment_image_tag @product, :image, size: "300x250", fallback: "no_image.jpg" %>
+     </div>
+     <div class='col-md-5 offset-md-5'>
+      <%= form_with model: @cart_product, url: public_cart_product_path, method: :post, local:true do |f| %>
+      <%= f.hidden_field :product_id, value: @product.id %>
+       <table class="table table-borderless">
+       <tr><th><string><%= @product.name %></string></th></tr>
+       <tr><th><%= @product.detail %></th></tr>
+       <tr><th>¥<%= @product.tax_included_price %>(税込)</th></tr>
+       <tr><th>[<%= @product.genre.name %>]</th></tr>
+       <tr>
+        <th>
+         <% if costomer_signed_in? %>
+         <%= f.select :amount, options_for_select((1..50).to_a), include_blank: "個数選択" %>
+         <% end %>
+        </th>
+        <th>
+         <% if costomer_signed_in? %>
+         <% if @product.sales_status == "販売中" %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+         <% elsif @product.sales_status == "販売停止" %>
+          <p>売り切れ</p>
+         <% end %>
+         <% end %>
+        </th>
+       </tr>
+      </table>
+     <% end %>
+    </div>
+   </div>
+ </div>
