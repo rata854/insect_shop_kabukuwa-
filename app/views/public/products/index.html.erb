@@ -1,0 +1,28 @@
+<% provide(:title, "商品一覧") %>
+<div class="container">
+ <h2>商品一覧(全<%= @products.count %>件)</h2>
+  <div class="row">
+    <% @products.each do |product| %>
+
+
+      <div class="col-md-3" style="text-align:center; padding-bottom:20px;">
+
+
+        <div class="card-deck">
+          <div class="card">
+             <%= link_to public_product_path(product) do %>
+              <%= attachment_image_tag(product, :image, size: "150x100", fallback: "no_image.jpg") %>
+              <% end %>
+              <div class="card-body text">
+                <h4 class="card-title"><%= product.name %></h4>
+                <p><%= product.detail %></p>
+                <p>税込:¥<%= product.tax_included_price %></p>
+                <p>ジャンル:<%= product.genre.name %></p>
+                <p><%= product.sales_status %></p>
+              </div>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
