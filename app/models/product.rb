@@ -12,8 +12,8 @@ class Product < ApplicationRecord
   attachment :image
 
   # 消費税計算
-  def self.tax_included_price(product)
-      (product.price * 1.1).floor(0)
+  def tax_included_price
+      (self.price * 1.1).floor(0)
   end
 
 end

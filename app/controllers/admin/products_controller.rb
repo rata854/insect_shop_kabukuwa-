@@ -20,7 +20,6 @@ class Admin::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @tax_included_price = Product.tax_included_price(@product)
   end
   
   def edit

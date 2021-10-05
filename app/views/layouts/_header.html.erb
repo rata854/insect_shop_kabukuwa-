@@ -12,7 +12,7 @@
             <%= link_to "商品一覧", admin_products_path, class: "fas fa-home nav-link text-light" %>
           </li>
           <li class="nav-item ml-5">
-            <%= link_to "会員一覧", admin_costomers_path, class: "fas fa-store nav-link text-light" %>
+            <%= link_to "会員一覧", admin_customers_path, class: "fas fa-store nav-link text-light" %>
           </li>
           <li class="nav-item ml-5">
             <%= link_to "注文履歴一覧", admin_orders_path, class: "fas fa-sign-out-alt nav-link text-light" %>
@@ -20,18 +20,31 @@
           <li class="nav-item ml-5">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
           </li>
+        <% elsif customer_signed_in? %>
+          <li class="nav-item ml-5">
+            <%= link_to "マイページ", public_customers_paht(current_user.id), class: "fas fa-store nav-link text-light" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "商品一覧", public_products_path, class: "fas fa-link nav-link text-light" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "カートの中身", public_cart_products_path, class: "fas fa-sign-in-alt nav-link text-light" %>
+          </li>
+          <li class="nav-item ml-5">
+            <%= link_to "ログアウト", destroy_public_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
+          </li>
         <% else %>
           <li class="nav-item ml-5">
-            <%= link_to "ジャンル一覧", "#", class: "fas fa-store nav-link text-light" %>
+            <%= link_to "アバウト", about_path, class: "fas fa-store nav-link text-light" %>
           </li>
           <li class="nav-item ml-5">
-            <%= link_to "商品一覧", "#", class: "fas fa-link nav-link text-light" %>
+            <%= link_to "商品一覧", public_products_path, class: "fas fa-link nav-link text-light" %>
+          </li>
+           <li class="nav-item ml-5">
+            <%= link_to "ログイン", new_customer_session_path, class: "fas fa-sign-in-alt nav-link text-light" %>
           </li>
           <li class="nav-item ml-5">
-            <%= link_to "新規登録", "#", class: "fas fa-user-plus nav-link text-light" %>
-          </li>
-          <li class="nav-item ml-5">
-            <%= link_to "ログイン", "#", class: "fas fa-sign-in-alt nav-link text-light" %>
+            <%= link_to "新規登録", new_customer_registration_path, class: "fas fa-user-plus nav-link text-light" %>
           </li>
         <% end %>
       </div>
