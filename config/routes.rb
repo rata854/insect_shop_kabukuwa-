@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'public/products#top'
+  get 'about' => 'public/products#about'
 
   devise_for :admins
 
@@ -13,11 +14,10 @@ Rails.application.routes.draw do
   end
 
   devise_for :customers
-get 'about' => 'public/products#about'
+
   namespace :public do
 
     resources :products, only: [:index, :show]
-
 
     resources :customers, only: [:show, :edit, :update]
         # get 'customers/withdrawal'
@@ -27,7 +27,7 @@ get 'about' => 'public/products#about'
     resources :orders, only: [:create, :new, :index, :show]
         # get 'orders/confirm'
         # get 'orders/completed'
-    resources :shipping_addressess, only: [:index, :create, :destroy, :edit, :update]
+    resources :shipping_addresses, only: [:index, :create, :destroy, :edit, :update]
 
   end
 end

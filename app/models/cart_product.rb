@@ -1,8 +1,8 @@
 class CartProduct < ApplicationRecord
-  
-  belongs_to :item
+
+  belongs_to :product
   belongs_to :customer
-  
-  validates :customer_id, :product_id, :admins, presence: true
-  
+
+  validates :customer_id, :product_id, :amount, presence: true
+
 end
