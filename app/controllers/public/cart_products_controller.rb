@@ -2,6 +2,11 @@ class Public::CartProductsController < ApplicationController
 
   def index
     @cart_products = current_customer.cart_products
+    @total_price = 0
+    @cart_products.each do |cart_product|
+      @product = Product.find(cart_product.product_id)
+  	  @total_price += (cart_product.amount.to_i * (@product.price.to_i * 1.1).round)
+  	end
   end
 
   def create
