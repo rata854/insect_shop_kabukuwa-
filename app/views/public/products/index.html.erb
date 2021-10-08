@@ -16,7 +16,7 @@
               <div class="card-body text">
                 <h4 class="card-title"><%= product.name %></h4>
                 <p><%= product.detail %></p>
-                <p>税込:¥<%= product.tax_included_price %></p>
+                <p>税込:¥<%= tax_included_price(product.price) %></p>
                 <p>ジャンル:<%= product.genre.name %></p>
                 <p><%= product.sales_status %></p>
               </div>

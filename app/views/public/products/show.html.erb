@@ -10,7 +10,7 @@
        <table class="table table-borderless">
        <tr><th><string><%= @product.name %></string></th></tr>
        <tr><th><%= @product.detail %></th></tr>
-       <tr><th>¥<%= @product.tax_included_price %>(税込)</th></tr>
+       <tr><th>¥<%= tax_included_price(@product.price) %>(税込)</th></tr>
        <tr><th>[<%= @product.genre.name %>]</th></tr>
        <tr>
         <th>
