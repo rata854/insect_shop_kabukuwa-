@@ -18,14 +18,14 @@
       <% @cart_products.each do |cart_product| %>
        <tr>
         <td><%= attachment_image_tag(cart_product.product, :image, size: "50x50", fallback: "no_image.jpg") %><%= cart_product.product.name %></td>
-        <td><%= cart_product.product.tax_included_price %></td>
+        <td><%= tax_included_price(cart_product.product.price) %></td>
         <td>
          <%= form_with model: cart_product, url: public_cart_products_path(cart_product.id), method: :patch, local:true do |f| %>
          <%= f.number_field :amount, min: 1, max: 10, autocomplete: "off" %>
          <%= f.submit "変更", class: 'btn btn-success' %>
          <% end %>
         </td>
-        <td><%= cart_product.product.tax_included_price * cart_product.amount.to_i %></td>
+        <td><%= sub_price(cart_product.product.price, cart_product.amount) %></td>
         <td><%= link_to "削除", "#", class: "btn btn-danger btn-sm btn-block mb-1", method: :delete %></td>
        </tr>
       <% end %>
@@ -33,18 +33,18 @@
     </table>
   </div>
   <div class='row offset-md-1 my-3 py-3'>
-    <div class='col-md-8'><%= link_to '買い物を続ける',root_path, class: "btn btn-primary btn-sm" %></div>
+    <div class='col-md-8'><%= link_to '買い物を続ける', root_path, class: "btn btn-primary btn-sm" %></div>
     <div class='col-md-3 text-right'>
      <table class='table table-bordered my-3 py-3'>
       <tr>
-       <th>合計金額</th><td><%= @total_price %></td>
+       <th>合計金額</th><td><%= total_price(@cart_products) %></td>
       </tr>
      </table>
     </div>
    </div>
    <div class='row offset-md-1'>
     <% if current_customer.cart_products.exists? %>
-      <div class='col-md-11 text-center mb-5'><%= link_to '情報入力に進む', "#", class: "btn btn-success btn-sm btn-block mb-1"%></div>
+      <div class='col-md-11 text-center mb-5'><%= link_to '情報入力に進む', new_public_order_path, class: "btn btn-success btn-sm btn-block mb-1"%></div>
     <% else %>
       <h3 class='col-md-11 text-center mb-5 text-danger py-3'>カートに商品を入れてください</h3>
     <% end %>
