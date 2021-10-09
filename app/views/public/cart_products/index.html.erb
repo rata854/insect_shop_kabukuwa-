@@ -33,7 +33,7 @@
     </table>
   </div>
   <div class='row offset-md-1 my-3 py-3'>
-    <div class='col-md-8'><%= link_to '買い物を続ける',root_path, class: "btn btn-primary btn-sm" %></div>
+    <div class='col-md-8'><%= link_to '買い物を続ける', root_path, class: "btn btn-primary btn-sm" %></div>
     <div class='col-md-3 text-right'>
      <table class='table table-bordered my-3 py-3'>
       <tr>
@@ -44,7 +44,7 @@
    </div>
    <div class='row offset-md-1'>
     <% if current_customer.cart_products.exists? %>
-      <div class='col-md-11 text-center mb-5'><%= link_to '情報入力に進む', "#", class: "btn btn-success btn-sm btn-block mb-1"%></div>
+      <div class='col-md-11 text-center mb-5'><%= link_to '情報入力に進む', new_public_order_path, class: "btn btn-success btn-sm btn-block mb-1"%></div>
     <% else %>
       <h3 class='col-md-11 text-center mb-5 text-danger py-3'>カートに商品を入れてください</h3>
     <% end %>
