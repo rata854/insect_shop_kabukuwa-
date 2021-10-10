@@ -47,10 +47,10 @@
 	   </div>
 
      <div class="row md-12 my-2 py-2">
-	  <pre><strong>支払方法</strong>    <%= session[:payment_method]  %></pre>
+	  <pre><strong>支払方法</strong>    <%= @order.payment_method  %></pre>
 	 </div>
 	 <div class="row md-12 my-1 py-1">
-	  <pre><strong>お届け先</strong>    〒<%= session[:postal_code] %> <%= session[:address] %> <%= session[:name] %>様</pre>
+	  <pre><strong>お届け先</strong>    〒<%= @order.postal_code %> <%= @order.address %> <%= @order.name %>様</pre>
      </div>
       <div class="col-md-12 "></div>
        <div class="col-md-12 text-center my-2 py-2">
